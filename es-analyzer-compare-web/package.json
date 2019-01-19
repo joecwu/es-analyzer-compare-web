@@ -1,0 +1,52 @@
+{
+  "name": "es-analyzer-compare-web",
+  "version": "0.0.1",
+  "description": "es-analyzer-compare-web",
+  "private": true,
+  "scripts": {
+    "build": "export NODE_ENV=production; webpack -p --config webpack.live.js",
+    "test": "export NODE_ENV=development; echo NODE_ENV=$NODE_ENV; webpack-dev-server --config webpack.dev.js",
+    "start": "export NODE_ENV=production; echo NODE_ENV=$NODE_ENV; webpack-dev-server --config webpack.prod.js"
+  },
+  "keywords": [
+    "elasticsearch"
+  ],
+  "author": "Joe Wu <joe@joecwu.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^16.7.3",
+    "bignumber.js": "^8.0.1",
+    "bootstrap": "^3.3.7",
+    "config": "^1.30.0",
+    "config-webpack": "^1.0.4",
+    "jquery": "^3.3.1",
+    "js-sha256": "^0.9.0",
+    "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
+    "react-confirm-alert": "^2.0.7",
+    "react-dom": "^16.6.3",
+    "react-hotjar": "^1.0.11",
+    "react-router-dom": "^4.3.1",
+    "url-parse": "^1.4.4",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^16.0.9",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.1",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^2.1.0",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.5"
+  }
+}

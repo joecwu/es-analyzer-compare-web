@@ -1,0 +1,8 @@
+{
+  "es": {
+    "search_url": {
+      "host": "http://52.195.13.202:9200/"
+    },
+    "authorization": "Basic cmVhZGFsbDpyZWFkYWxs"
+  }
+}
