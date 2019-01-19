@@ -60,7 +60,7 @@ class SearchRespList extends Component {
   componentWillReceiveProps(props) {
     console.log('componentWillReceiveProps - ' + props.keyword);
     // const { keyword, id } = this.props;
-    if (props.keyword !== this.state.keyword) {
+    if (props.keyword !== this.state.keyword || props.refresh != this.props.refresh) {
       this.setState({ ['keyword']: props.keyword }, () => {
         this.fetchItemsFromServer();
       });

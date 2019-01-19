@@ -21,10 +21,11 @@ class App extends Component {
     this.setState({ tempKeyword: event.target.value });
   }
   search(event) {
-    console.log('search for keyword:' + this.state.tempKeyword);
-    this.setState({ keyword: this.state.tempKeyword });
     event.preventDefault();
-    this.refreshSearchList();
+    console.log('search for keyword:' + this.state.tempKeyword);
+    this.setState({ keyword: this.state.tempKeyword }, () => {
+      this.refreshSearchList();
+    });
     //TODO update component's search
   }
   refreshSearchList() {
