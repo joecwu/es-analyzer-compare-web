@@ -121,7 +121,7 @@ class SearchRespList extends Component {
         Object.keys(arr).forEach(function (key){
            content = content + key + '('+ arr[key] + ')\n';
         });
-        return (<Tooltip id="tooltip" componentClass='tooltip-inner'>
+        return (<Tooltip id="tooltip">
           {content}
         </Tooltip>)
       };
