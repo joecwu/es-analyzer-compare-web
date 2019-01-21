@@ -93,3 +93,8 @@ input[type='file'] {
     opacity: 0.9;
   }
 }
+
+.tooltip-inner {
+  white-space:pre;
+  max-width:none;
+}
