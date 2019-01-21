@@ -14,6 +14,8 @@ import {
   Tooltip,
   OverlayTrigger
 } from 'react-bootstrap';
+import es_type_helper from '../utils/kks_es_type_helper';
+import DateTime from '../components/DateTime';
 
 var PropTypes = require('prop-types');
 
@@ -62,7 +64,7 @@ class SearchRespList extends Component {
   componentWillReceiveProps(props) {
     console.log('componentWillReceiveProps - ' + props.keyword);
     // const { keyword, id } = this.props;
-    if (props.keyword !== this.state.keyword || props.refresh != this.props.refresh) {
+    if (props.refresh != this.props.refresh) {
       this.setState({ ['keyword']: props.keyword }, () => {
         this.fetchItemsFromServer();
       });
@@ -77,33 +79,11 @@ class SearchRespList extends Component {
     var items = [];
     esResponse.hits.hits.map(hitItem => {
       // merge all artist names
-      var songArtistNamesArr = [];
-      if(typeof hitItem._source.songs != 'undefined') {
-        hitItem._source.songs.forEach(function (song){
-            songArtistNamesArr = songArtistNamesArr.concat(song.artist_name)
-        });
+      if(hitItem._type == 'playlist') {
+        items.push(es_type_helper.extractPlaylistItem(hitItem));
+      }else if(hitItem._type == 'song') {
+        items.push(es_type_helper.extractSongItem(hitItem));
       }
-      var songArtistNames = songArtistNamesArr.reduce(function (acc, curr) {
-        if (typeof acc[curr] == 'undefined') {
-          acc[curr] = 1;
-        } else {
-          acc[curr] += 1;
-        }
-      
-        return acc;
-      }, {});
-
-      items.push({
-        _id: hitItem._id,
-        _type: hitItem._type,
-        score: hitItem._score,
-        title: hitItem._source.title,
-        content: hitItem._source.content,
-        songArtistNames: songArtistNames,
-        createdAt: typeof hitItem._source.created_at === 'undefined' ? undefined : new Date(hitItem._source.created_at),
-        updatedAt: typeof hitItem._source.updated_at === 'undefined' ? undefined : new Date(hitItem._source.updated_at),
-        startedAt: typeof hitItem._source.started_at === 'undefined' ? undefined : new Date(hitItem._source.started_at),
-      });
     });
     console.debug('search result items.', items);
     this.setState({
@@ -116,22 +96,20 @@ class SearchRespList extends Component {
   }
 
   render() {
-    const tooltip = (arr) => {
-        var content = '';
-        Object.keys(arr).forEach(function (key){
-           content = content + key + '('+ arr[key] + ')\n';
-        });
+    const tooltip = (content) => {
         return (<Tooltip id="tooltip">
           {content}
         </Tooltip>)
       };
     const rows = this.state.respObj.items.map(item => (
       /*jshint ignore:start*/
-      <div>
+      <div style={{marginBottom: "3px"}}>
         <Badge>{item.score}</Badge>
-        <OverlayTrigger placement="right" overlay={tooltip(item.songArtistNames)}>
+        <Badge style={{backgroundColor: "darkblue", float: "right", marginTop: "3px"}}>{item.popularity}</Badge>
+        <OverlayTrigger placement="right" overlay={tooltip(item.tooltip)}>
             <ListGroupItem header={item.title}>{item.content}</ListGroupItem>
         </OverlayTrigger>
+        <DateTime value={item.createdAt} timeZone='Asia/Tokyo' />
       </div>
       /*jshint ignore:end*/
     ));
