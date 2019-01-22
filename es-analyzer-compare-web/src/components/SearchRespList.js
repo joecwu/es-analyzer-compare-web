@@ -37,7 +37,7 @@ class SearchRespList extends Component {
 
   fetchItemsFromServer() {
     console.log('fetchItemsFromServer');
-    this.setState({ ['is_loading']: true });
+    this.setState({ ['is_loading']: true, ['respObj']: { items: [], took: 0, total: 0 } });
     var requestBody = JSON.stringify({
       id: this.state.searchTemplate,
       params: {
@@ -105,7 +105,7 @@ class SearchRespList extends Component {
       /*jshint ignore:start*/
       <div style={{marginBottom: "3px"}}>
         <Badge>{item.score}</Badge>
-        <Badge style={{backgroundColor: "darkblue", float: "right", marginTop: "3px"}}>{item.popularity}</Badge>
+        <Badge bsClass={'badge popularity'}>{item.popularity}</Badge>
         <OverlayTrigger placement="right" overlay={tooltip(item.tooltip)}>
             <ListGroupItem header={item.title}>{item.content}</ListGroupItem>
         </OverlayTrigger>

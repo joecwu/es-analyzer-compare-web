@@ -98,3 +98,9 @@ input[type='file'] {
   white-space:pre;
   max-width:none;
 }
+
+.popularity {
+  background-color: rgba(55, 121, 1, 0.9);
+  float: right;
+  margin-top: 2px;
+}
