@@ -11,7 +11,7 @@ class App extends Component {
       key: 1,
       keyword: '',
       tempKeyword: '',
-      pageSize: '30',
+      pageSize: 30,
       song_cbx_01: true,
       song_cbx_02: true,
       song_cbx_03: true,
@@ -38,9 +38,8 @@ class App extends Component {
   }
   search(event) {
     event.preventDefault();
-    console.log('search for keyword:' + this.state.tempKeyword);
+    console.debug('search for keyword', this.state.tempKeyword);
     this.setState({ keyword: this.state.tempKeyword }, () => {
-      console.log('tab:' + this.state.key);
       if (this.state.key == 1) {
         this.refreshSong();
       } else if (this.state.key == 2) {

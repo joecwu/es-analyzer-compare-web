@@ -62,7 +62,7 @@ class SearchRespList extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log('componentWillReceiveProps - ' + props.keyword);
+    console.debug('componentWillReceiveProps - ' + props.keyword);
     // const { keyword, id } = this.props;
     if (props.refresh != this.props.refresh) {
       this.setState({ ['keyword']: props.keyword }, () => {
@@ -103,7 +103,7 @@ class SearchRespList extends Component {
       };
     const rows = this.state.respObj.items.map(item => (
       /*jshint ignore:start*/
-      <div style={{marginBottom: "3px"}}>
+      <div key={item._id} style={{marginBottom: "3px"}}>
         <Badge>{item.score}</Badge>
         <Badge bsClass={'badge popularity'}>{item.popularity}</Badge>
         <OverlayTrigger placement="right" overlay={tooltip(item.tooltip)}>
