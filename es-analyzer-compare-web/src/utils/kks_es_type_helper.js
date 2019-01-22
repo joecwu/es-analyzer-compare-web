@@ -35,13 +35,21 @@ const es_type_helper = {
         };
     },
     extractSongItem: function(hitItem) {
+      var artistNames = '';
+      if(typeof hitItem._source.artist.names != 'undefined') {
+        artistNames = hitItem._source.artist.names.join('\n')
+      }
+      var artistAltNames = '';
+      if(typeof hitItem._source.alternative_names.names != 'undefined') {
+        artistAltNames = hitItem._source.alternative_names.names.join('\n')
+      }
         return {
           _id: hitItem._id,
           _type: hitItem._type,
           score: hitItem._score,
           title: hitItem._source.names.join(' / '),
           content: hitItem._source.alternative_names.join('\n'),
-          tooltip: 'Artist Names:\n' + hitItem._source.artist.names.join('\n') + '\n\nArtist Alias:\n' + hitItem._source.artist.alternative_names.join('\n'),
+          tooltip: 'Artist Names:\n' + artistNames + '\n\nArtist Alias:\n' + artistAltNames,
           popularity: hitItem._source.popularity.lastweek,
           createdAt: typeof hitItem._source.album.release_date === 'undefined' ? undefined : new Date(hitItem._source.album.release_date),
           updatedAt: typeof hitItem._source.album.updated_at === 'undefined' ? undefined : new Date(hitItem._source.album.updated_at),
