@@ -22,6 +22,14 @@ class App extends Component {
       song_cbx_08: false,
       song_cbx_09: false,
       song_cbx_10: false,
+      song_artist_cbx_01: true,
+      song_artist_cbx_02: true,
+      song_artist_cbx_03: true,
+      song_artist_cbx_04: true,
+      song_artist_cbx_05: true,
+      song_artist_cbx_06: true,
+      song_artist_cbx_07: false,
+      song_artist_cbx_08: false,
     };
     this.search = this.search.bind(this);
     this.keywordChange = this.keywordChange.bind(this);
@@ -218,9 +226,19 @@ class App extends Component {
             </Grid>
           </Tab>
           <Tab eventKey={2} title="Song by Artist">
+          <p>
+            <Checkbox id="song_artist_cbx_01" checked={this.state['song_artist_cbx_01']} onChange={this.handleChange} inline >1. Original</Checkbox>
+            <Checkbox id="song_artist_cbx_02" checked={this.state['song_artist_cbx_02']} onChange={this.handleChange} inline >2. Original (人気順)</Checkbox>
+            <Checkbox id="song_artist_cbx_03" checked={this.state['song_artist_cbx_03']} onChange={this.handleChange} inline >3. Original (新着順)</Checkbox>
+            <Checkbox id="song_artist_cbx_04" checked={this.state['song_artist_cbx_04']} onChange={this.handleChange} inline >4. Readingform</Checkbox>
+            <Checkbox id="song_artist_cbx_05" checked={this.state['song_artist_cbx_05']} onChange={this.handleChange} inline >5. Readingform (score only)</Checkbox>
+            <Checkbox id="song_artist_cbx_06" checked={this.state['song_artist_cbx_06']} onChange={this.handleChange} inline >6. Readingform (phrase^3)</Checkbox>
+            <Checkbox id="song_artist_cbx_07" checked={this.state['song_artist_cbx_07']} onChange={this.handleChange} inline >7. Readingform (phrase^3, 人気順)</Checkbox>
+            <Checkbox id="song_artist_cbx_08" checked={this.state['song_artist_cbx_08']} onChange={this.handleChange} inline >8. Readingform (phrase^3, 新着順)</Checkbox>
+          </p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_01 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -230,7 +248,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_02 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -240,7 +258,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_03 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -250,7 +268,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_04 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -260,7 +278,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_05 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -270,12 +288,32 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_06 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
                     searchTemplate="song_by_artist_v2_readingform_boost_keyword"
                     title="6. Readingform (phrase^3)"
+                    refresh={this.state.refreshSongByArtist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_07 ? 'inline' : 'none' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_by_artist_v2_readingform_boost_keyword_popularity"
+                    title="7. Readingform (phrase^3, 人気順)"
+                    refresh={this.state.refreshSongByArtist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_08 ? 'inline' : 'none' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_by_artist_v2_readingform_boost_keyword_releasedate"
+                    title="8. Readingform (phrase^3, 新着順)"
                     refresh={this.state.refreshSongByArtist}
                     pageSize={this.state.pageSize}
                   />
