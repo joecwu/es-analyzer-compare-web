@@ -13,29 +13,35 @@ class App extends Component {
       tempKeyword: '',
       pageSize: 30,
       song_cbx_01: true,
-      song_cbx_02: true,
-      song_cbx_03: true,
+      song_cbx_02: false,
+      song_cbx_03: false,
       song_cbx_04: true,
       song_cbx_05: true,
-      song_cbx_06: true,
+      song_cbx_06: false,
       song_cbx_07: false,
       song_cbx_08: false,
-      song_cbx_09: false,
-      song_cbx_10: false,
+      song_cbx_09: true,
+      song_cbx_10: true,
+      song_cbx_11: true,
       song_artist_cbx_01: true,
-      song_artist_cbx_02: true,
-      song_artist_cbx_03: true,
+      song_artist_cbx_02: false,
+      song_artist_cbx_03: false,
       song_artist_cbx_04: true,
       song_artist_cbx_05: true,
-      song_artist_cbx_06: true,
+      song_artist_cbx_06: false,
       song_artist_cbx_07: false,
       song_artist_cbx_08: false,
+      song_artist_cbx_09: true,
+      song_artist_cbx_10: true,
+      song_artist_cbx_11: true,
     };
     this.search = this.search.bind(this);
     this.keywordChange = this.keywordChange.bind(this);
     this.refreshPlaylist = this.refreshPlaylist.bind(this);
     this.refreshSong = this.refreshSong.bind(this);
     this.refreshSongByArtist = this.refreshSongByArtist.bind(this);
+    this.refreshSongAll = this.refreshSongAll.bind(this);
+    this.refreshArtist = this.refreshArtist.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -54,6 +60,10 @@ class App extends Component {
         this.refreshSongByArtist();
       } else if (this.state.key == 3) {
         this.refreshPlaylist();
+      } else if (this.state.key == 4) {
+        this.refreshSongAll();
+      } else if (this.state.key == 5) {
+        this.refreshArtist();
       }
     });
     //TODO update component's search
@@ -66,6 +76,12 @@ class App extends Component {
   }
   refreshSongByArtist() {
     this.setState({ refreshSongByArtist: !this.state.refreshSongByArtist });
+  }
+  refreshSongAll() {
+    this.setState({ refreshSongAll: !this.state.refreshSongAll });
+  }
+  refreshArtist() {
+    this.setState({ refreshArtist: !this.state.refreshArtist });
   }
 
   handleSelect(key) {
@@ -117,8 +133,9 @@ class App extends Component {
             <Checkbox id="song_cbx_06" checked={this.state['song_cbx_06']} onChange={this.handleChange} inline >6. Readingform (phrase^3)</Checkbox>
             <Checkbox id="song_cbx_07" checked={this.state['song_cbx_07']} onChange={this.handleChange} inline >7. Readingform (phrase^3, 人気順)</Checkbox>
             <Checkbox id="song_cbx_08" checked={this.state['song_cbx_08']} onChange={this.handleChange} inline >8. Readingform (phrase^3, 新着順)</Checkbox>
-            <Checkbox id="song_cbx_09" checked={this.state['song_cbx_09']} onChange={this.handleChange} inline >9. Readingform Song+Artist (phrase^3)</Checkbox>
-            <Checkbox id="song_cbx_10" checked={this.state['song_cbx_10']} onChange={this.handleChange} inline >10. Readingform Song+Artist (score only)</Checkbox>
+            <Checkbox id="song_cbx_09" checked={this.state['song_cbx_09']} onChange={this.handleChange} inline >9. Mix</Checkbox>
+            <Checkbox id="song_cbx_10" checked={this.state['song_cbx_10']} onChange={this.handleChange} inline >10. Mix (人気順)</Checkbox>
+            <Checkbox id="song_cbx_11" checked={this.state['song_cbx_11']} onChange={this.handleChange} inline >11. Mix (新着順)</Checkbox>
           </p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
@@ -127,7 +144,7 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
                     searchTemplate="song_v2"
-                    title="1. Original"
+                    title="1. Original (mix sort)"
                     refresh={this.state.refreshSong}
                     pageSize={this.state.pageSize}
                   />
@@ -157,7 +174,7 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
                     searchTemplate="song_v2_readingform"
-                    title="4. Readingform"
+                    title="4. Readingform (mix sort)"
                     refresh={this.state.refreshSong}
                     pageSize={this.state.pageSize}
                   />
@@ -206,8 +223,8 @@ class App extends Component {
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
-                    searchTemplate="song_v2_readingform_all_boost_keyword"
-                    title="9. Readingform Song+Artist (phrase^3)"
+                    searchTemplate="song_v2_mix"
+                    title="9. Mix (mix sort)"
                     refresh={this.state.refreshSong}
                     pageSize={this.state.pageSize}
                   />
@@ -216,8 +233,18 @@ class App extends Component {
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
-                    searchTemplate="song_v2_all_readingform_score"
-                    title="10. Readingform Song+Artist (score only)"
+                    searchTemplate="song_v2_mix_popularity"
+                    title="10. Mix (人気順)"
+                    refresh={this.state.refreshSong}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_cbx_11 ? 'inline' : 'none' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_v2_mix_releasedate"
+                    title="11. Mix (新着順)"
                     refresh={this.state.refreshSong}
                     pageSize={this.state.pageSize}
                   />
@@ -235,6 +262,9 @@ class App extends Component {
             <Checkbox id="song_artist_cbx_06" checked={this.state['song_artist_cbx_06']} onChange={this.handleChange} inline >6. Readingform (phrase^3)</Checkbox>
             <Checkbox id="song_artist_cbx_07" checked={this.state['song_artist_cbx_07']} onChange={this.handleChange} inline >7. Readingform (phrase^3, 人気順)</Checkbox>
             <Checkbox id="song_artist_cbx_08" checked={this.state['song_artist_cbx_08']} onChange={this.handleChange} inline >8. Readingform (phrase^3, 新着順)</Checkbox>
+            <Checkbox id="song_artist_cbx_09" checked={this.state['song_artist_cbx_09']} onChange={this.handleChange} inline >9. Mix</Checkbox>
+            <Checkbox id="song_artist_cbx_10" checked={this.state['song_artist_cbx_10']} onChange={this.handleChange} inline >10. Mix (人気順)</Checkbox>
+            <Checkbox id="song_artist_cbx_11" checked={this.state['song_artist_cbx_11']} onChange={this.handleChange} inline >11. Mix (新着順)</Checkbox>
           </p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
@@ -243,7 +273,7 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
                     searchTemplate="song_by_artist_v2"
-                    title="1. Original"
+                    title="1. Original (mix sort)"
                     refresh={this.state.refreshSongByArtist}
                     pageSize={this.state.pageSize}
                   />
@@ -273,7 +303,7 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
                     searchTemplate="song_by_artist_v2_readingform"
-                    title="4. Readingform"
+                    title="4. Readingform (mix sort)"
                     refresh={this.state.refreshSongByArtist}
                     pageSize={this.state.pageSize}
                   />
@@ -318,10 +348,41 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_09 ? 'inline' : 'none' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_by_artist_v2_mix"
+                    title="9. Mix (mix sort)"
+                    refresh={this.state.refreshSongByArtist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_10 ? 'inline' : 'none' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_by_artist_v2_mix_popularity"
+                    title="10. Mix (人気順)"
+                    refresh={this.state.refreshSongByArtist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_11 ? 'inline' : 'none' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_by_artist_v2_mix_releasedate"
+                    title="11. Mix (新着順)"
+                    refresh={this.state.refreshSongByArtist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
               </Row>
             </Grid>
           </Tab>
           <Tab eventKey={3} title="Playlist">
+            <p><b>Notes:</b> Due to data source issue, the search logic of Playlist has no artist alias reference for now, the artist alias will be involved in the future optimization.</p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
                 <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
@@ -349,17 +410,7 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
                     searchTemplate="playlist_v2_fix_score_p_artist"
-                    title="3. Original fix score + Artist Name^1"
-                    refresh={this.state.refreshPlaylist}
-                    pageSize={this.state.pageSize}
-                  />
-                </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
-                  <SearchRespList
-                    keyword={this.state.keyword}
-                    searchIndex="playlist_v3"
-                    searchTemplate="playlist_v2_fix_score_p_artist_03"
-                    title="4. Original fix score + Artist Name^0.3"
+                    title="3. Original fix score + Artist + Song"
                     refresh={this.state.refreshPlaylist}
                     pageSize={this.state.pageSize}
                   />
@@ -369,7 +420,7 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
                     searchTemplate="playlist_v2_fix_score_p_artist_synonym"
-                    title="5. Artist Name^0.3 + Synonym"
+                    title="4. Synonym + Artist + Song"
                     refresh={this.state.refreshPlaylist}
                     pageSize={this.state.pageSize}
                   />
@@ -379,8 +430,100 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
                     searchTemplate="playlist_v2_fix_score_p_artist_readingform"
-                    title="6. Artist Name^1 + ReadingForm"
+                    title="5.ReadingForm + Artist + Song"
                     refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="playlist_v3"
+                    searchTemplate="playlist_v2_mix"
+                    title="6.Mix + Artist + Song"
+                    refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </Tab>
+          <Tab eventKey={4} title="Song by (Song + Artist)">
+            <Grid style={{ margin: '0px', width: '100%' }}>
+              <Row className="show-grid" style={{ width: '100%' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_artist_v2_readingform_all_boost_keyword"
+                    title="1. Readingform (mix sort)"
+                    refresh={this.state.refreshSongAll}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_artist_v2_all_readingform_score"
+                    title="2. Readingform (score only)"
+                    refresh={this.state.refreshSongAll}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_artist_v2_mix"
+                    title="3. Mix (mix sort)"
+                    refresh={this.state.refreshSongAll}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_artist_v2_mix_score"
+                    title="4. Mix (score only)"
+                    refresh={this.state.refreshSongAll}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_artist_v2_mix_popularity"
+                    title="5. Mix (人気順)"
+                    refresh={this.state.refreshSongAll}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_song_20181001_v3"
+                    searchTemplate="song_artist_v2_mix_releasedate"
+                    title="6. Mix (新着順)"
+                    refresh={this.state.refreshSongAll}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </Tab>
+          <Tab eventKey={5} title="Artist">
+            <Grid style={{ margin: '0px', width: '100%' }}>
+              <Row className="show-grid" style={{ width: '100%' }}>
+                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="utapass_artist_20180925_v3"
+                    searchTemplate="artist_v3_mix"
+                    title="1. Mix"
+                    refresh={this.state.refreshArtist}
                     pageSize={this.state.pageSize}
                   />
                 </Col>

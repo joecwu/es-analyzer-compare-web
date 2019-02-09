@@ -9,7 +9,7 @@ class DateTime extends Component {
   render() {
     const value = this.props.value;
     if(this.props.timeZone == 'Asia/Tokyo') {
-      return (<span>{(typeof value === 'undefined') ? '' : value.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })} (JST)</span>);
+      return (<span>{(typeof value === 'undefined') ? '' : value.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' } + '(JST)')} </span>);
     } else {
       return (<span>{(typeof value === 'undefined') ? '' : value.toLocaleString()}</span>);
     }

@@ -12,7 +12,9 @@ import {
   ListGroupItem,
   Badge,
   Tooltip,
-  OverlayTrigger
+  OverlayTrigger,
+  Popover,
+  ButtonToolbar
 } from 'react-bootstrap';
 import es_type_helper from '../utils/kks_es_type_helper';
 import DateTime from '../components/DateTime';
@@ -83,6 +85,10 @@ class SearchRespList extends Component {
         items.push(es_type_helper.extractPlaylistItem(hitItem));
       }else if(hitItem._type == 'song') {
         items.push(es_type_helper.extractSongItem(hitItem));
+      }else if(hitItem._type == 'artist') {
+        items.push(es_type_helper.extractArtistItem(hitItem));
+      }else {
+        console.error('unsupported item type', hitITem._type);
       }
     });
     console.debug('search result items.', items);
@@ -101,14 +107,36 @@ class SearchRespList extends Component {
           {content}
         </Tooltip>)
       };
+      const popover = (popoverItem) => {
+        return (<Popover id="popover-trigger-focus" title={popoverItem.title + ' (' + popoverItem.count + ')'}>
+          {popoverItem.content}
+        </Popover>)
+      };
+      const buttonToolbar = (item) => {
+        if(typeof item.popover1 === 'undefined') {
+          return <div />;
+        } else {
+          return (
+            <ButtonToolbar>
+              <OverlayTrigger trigger="focus" placement="bottom" overlay={popover(item.popover1)}>
+                <Button bsStyle="info" size="xs" bsClass="btn btn-info btn-xs" style={{margin:"2px"}}>{item.popover1.title}</Button>
+              </OverlayTrigger>
+              <OverlayTrigger trigger="focus" placement="bottom" overlay={popover(item.popover2)}>
+                <Button bsStyle="info" size="xs" bsClass="btn btn-info btn-xs" style={{margin:"2px"}}>{item.popover2.title}</Button>
+              </OverlayTrigger>
+            </ButtonToolbar>
+          )
+        }
+      }
     const rows = this.state.respObj.items.map(item => (
       /*jshint ignore:start*/
       <div key={item._id} style={{marginBottom: "3px"}}>
         <Badge>{item.score}</Badge>
         <Badge bsClass={'badge popularity'}>{item.popularity}</Badge>
-        <OverlayTrigger placement="right" overlay={tooltip(item.tooltip)}>
-            <ListGroupItem header={item.title}>{item.content}</ListGroupItem>
-        </OverlayTrigger>
+        {buttonToolbar(item)}
+        {/* <OverlayTrigger placement="right" overlay={tooltip(item.tooltip)}> */}
+        <ListGroupItem header={item.title}>{item.content}</ListGroupItem>
+        {/* </OverlayTrigger> */}
         <DateTime value={item.createdAt} timeZone='Asia/Tokyo' />
       </div>
       /*jshint ignore:end*/
@@ -129,7 +157,7 @@ class SearchRespList extends Component {
             />
             <div>
               {' '}
-              took: {this.state.respObj.took} total: {this.state.respObj.total}{' '}
+              <b>took:</b> {this.state.respObj.took} (ms) <b>total:</b> {this.state.respObj.total}{' '}
             </div>
             <ListGroup>{rows}</ListGroup>
           </Panel.Body>
