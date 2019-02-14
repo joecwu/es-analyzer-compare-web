@@ -388,7 +388,7 @@ class App extends Component {
                 <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
-                    searchIndex="playlist_v2"
+                    searchIndex="playlist_v3"
                     searchTemplate="playlist_v2"
                     title="1. Original"
                     refresh={this.state.refreshPlaylist}
