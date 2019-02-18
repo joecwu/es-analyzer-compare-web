@@ -244,7 +244,7 @@ class App extends Component {
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
                     searchTemplate="playlist_v2_mix"
-                    title="4. New D"
+                    title="4. New C"
                     refresh={this.state.refreshPlaylist}
                     pageSize={this.state.pageSize}
                   />
