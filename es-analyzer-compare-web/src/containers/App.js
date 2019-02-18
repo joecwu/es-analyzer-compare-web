@@ -131,7 +131,7 @@ class App extends Component {
           </p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_cbx_01 ? 'inline' : 'none' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px', display: this.state.song_cbx_01 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -141,7 +141,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_cbx_02 ? 'inline' : 'none' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px', display: this.state.song_cbx_02 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -151,7 +151,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_cbx_03 ? 'inline' : 'none' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px', display: this.state.song_cbx_03 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -172,7 +172,7 @@ class App extends Component {
           </p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_01 ? 'inline' : 'none' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_01 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -182,7 +182,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_02 ? 'inline' : 'none' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_02 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -192,7 +192,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_03 ? 'inline' : 'none' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px', display: this.state.song_artist_cbx_03 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -209,7 +209,7 @@ class App extends Component {
             <p><b>Notes:</b> Due to data source issue, the search logic of Playlist has no artist alias reference for now, the artist alias will be involved in the future optimization.</p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -219,7 +219,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -229,7 +229,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -239,7 +239,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -255,7 +255,7 @@ class App extends Component {
           <Tab eventKey={4} title="Song by (Song Name + Artist Name)">
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
@@ -265,7 +265,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col lg={2} md={3} sm={4} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={4} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="utapass_song_20181001_v3"
