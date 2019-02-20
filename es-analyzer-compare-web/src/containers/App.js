@@ -206,7 +206,7 @@ class App extends Component {
             </Grid>
           </Tab>
           <Tab eventKey={3} title="Playlist">
-            <p><b>Notes:</b> Due to data source issue, the search logic of Playlist has no artist alias reference for now, the artist alias will be involved in the future optimization.</p>
+            <p><b>Notes:</b> Due to data source issue, the search logic of Playlist has no artist alias reference (except New B) for now, the artist alias will be involved in the coming optimization.</p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
                 <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
@@ -251,7 +251,7 @@ class App extends Component {
                 </Col>
               </Row>
             </Grid>
-          </Tab>
+          </Tab>  
           <Tab eventKey={4} title="Song by (Song Name + Artist Name)">
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
