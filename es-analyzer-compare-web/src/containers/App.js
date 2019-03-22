@@ -209,17 +209,7 @@ class App extends Component {
             <p><b>Notes:</b> Due to data source issue, the search logic of Playlist has no artist alias reference (except New B) for now, the artist alias will be involved in the coming optimization.</p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
-                  <SearchRespList
-                    keyword={this.state.keyword}
-                    searchIndex="playlist_v3"
-                    searchTemplate="playlist_v2_cjk"
-                    title="1. Original(cjk)"
-                    refresh={this.state.refreshPlaylist}
-                    pageSize={this.state.pageSize}
-                  />
-                </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -229,17 +219,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
-                  <SearchRespList
-                    keyword={this.state.keyword}
-                    searchIndex="playlist_v3"
-                    searchTemplate="playlist_v2_cjk_fix_score_p_artist"
-                    title="2. New A (cjk)"
-                    refresh={this.state.refreshPlaylist}
-                    pageSize={this.state.pageSize}
-                  />
-                </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -249,7 +229,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -259,7 +239,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={3} style={{ margin: '0px', padding: '1px' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
