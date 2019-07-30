@@ -34,6 +34,17 @@ class App extends Component {
       song_artist_cbx_09: true,
       song_artist_cbx_10: true,
       song_artist_cbx_11: true,
+      playlist_cbx_01: false,
+      playlist_cbx_02: false,
+      playlist_cbx_03: false,
+      playlist_cbx_04: false,
+      playlist_cbx_05: true,
+      playlist_cbx_06: true,
+      playlist_cbx_07: true,
+      playlist_cbx_08: true,
+      playlist_cbx_09: true,
+      playlist_cbx_10: true,
+      playlist_cbx_11: false,
     };
     this.search = this.search.bind(this);
     this.keywordChange = this.keywordChange.bind(this);
@@ -206,10 +217,23 @@ class App extends Component {
             </Grid>
           </Tab>
           <Tab eventKey={3} title="Playlist">
+          <p>
+            <Checkbox id="playlist_cbx_01" checked={this.state['playlist_cbx_01']} onChange={this.handleChange} inline >Original</Checkbox>
+            <Checkbox id="playlist_cbx_02" checked={this.state['playlist_cbx_02']} onChange={this.handleChange} inline >New A</Checkbox>
+            <Checkbox id="playlist_cbx_03" checked={this.state['playlist_cbx_03']} onChange={this.handleChange} inline >New B</Checkbox>
+            <Checkbox id="playlist_cbx_04" checked={this.state['playlist_cbx_04']} onChange={this.handleChange} inline >New B (v2)</Checkbox>
+            <Checkbox id="playlist_cbx_05" checked={this.state['playlist_cbx_05']} onChange={this.handleChange} inline >New B (v3)</Checkbox>
+            <Checkbox id="playlist_cbx_06" checked={this.state['playlist_cbx_06']} onChange={this.handleChange} inline >New B (v4)</Checkbox>
+            <Checkbox id="playlist_cbx_07" checked={this.state['playlist_cbx_07']} onChange={this.handleChange} inline >New B (v5)</Checkbox>
+            <Checkbox id="playlist_cbx_08" checked={this.state['playlist_cbx_08']} onChange={this.handleChange} inline >New B (v6)</Checkbox>
+            <Checkbox id="playlist_cbx_09" checked={this.state['playlist_cbx_09']} onChange={this.handleChange} inline >New B (v7)</Checkbox>
+            <Checkbox id="playlist_cbx_10" checked={this.state['playlist_cbx_10']} onChange={this.handleChange} inline >New B (v8)</Checkbox>
+            <Checkbox id="playlist_cbx_11" checked={this.state['playlist_cbx_11']} onChange={this.handleChange} inline >New C</Checkbox>
+          </p>
             <p><b>Notes:</b> Due to data source issue, the search logic of Playlist has no artist alias reference (except New B) for now, the artist alias will be involved in the coming optimization.</p>
             <Grid style={{ margin: '0px', width: '100%' }}>
               <Row className="show-grid" style={{ width: '100%' }}>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_01 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -219,7 +243,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_02 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -229,7 +253,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_03 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -239,7 +263,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_04 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -249,7 +273,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_05 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -259,7 +283,57 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_06 ? 'inline' : 'none'  }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="playlist_v3"
+                    searchTemplate="playlist_v2_fix_score_p_artist_mix_v4"
+                    title="New B (v4)"
+                    refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_07 ? 'inline' : 'none'  }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="playlist_v3"
+                    searchTemplate="playlist_v2_fix_score_p_artist_mix_v5"
+                    title="New B (v5)"
+                    refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_08 ? 'inline' : 'none'  }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="playlist_v3"
+                    searchTemplate="playlist_v2_fix_score_p_artist_mix_v6"
+                    title="New B (v6)"
+                    refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_09 ? 'inline' : 'none'  }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="playlist_v3"
+                    searchTemplate="playlist_v2_fix_score_p_artist_mix_v7"
+                    title="New B (v7)"
+                    refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_10 ? 'inline' : 'none'  }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="playlist_v3"
+                    searchTemplate="playlist_v2_fix_score_p_artist_mix_v8"
+                    title="New B (v8)"
+                    refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_11 ? 'inline' : 'none'  }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
