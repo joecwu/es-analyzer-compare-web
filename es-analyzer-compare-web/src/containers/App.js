@@ -221,14 +221,14 @@ class App extends Component {
           <p>
             <Checkbox id="playlist_cbx_01" checked={this.state['playlist_cbx_01']} onChange={this.handleChange} inline >New A</Checkbox>
             <Checkbox id="playlist_cbx_02" checked={this.state['playlist_cbx_02']} onChange={this.handleChange} inline >New A (v2)</Checkbox>
-            <Checkbox id="playlist_cbx_03" checked={this.state['playlist_cbx_03']} onChange={this.handleChange} inline >New B</Checkbox>
-            <Checkbox id="playlist_cbx_04" checked={this.state['playlist_cbx_04']} onChange={this.handleChange} inline >New B (v2)</Checkbox>
-            <Checkbox id="playlist_cbx_05" checked={this.state['playlist_cbx_05']} onChange={this.handleChange} inline >New B (v3)</Checkbox>
-            <Checkbox id="playlist_cbx_06" checked={this.state['playlist_cbx_06']} onChange={this.handleChange} inline >New B (v4)</Checkbox>
-            <Checkbox id="playlist_cbx_07" checked={this.state['playlist_cbx_07']} onChange={this.handleChange} inline >New B (v5)</Checkbox>
-            <Checkbox id="playlist_cbx_08" checked={this.state['playlist_cbx_08']} onChange={this.handleChange} inline >New B (v6)</Checkbox>
-            <Checkbox id="playlist_cbx_09" checked={this.state['playlist_cbx_09']} onChange={this.handleChange} inline >New B (v7)</Checkbox>
-            <Checkbox id="playlist_cbx_10" checked={this.state['playlist_cbx_10']} onChange={this.handleChange} inline >New B (v8)</Checkbox>
+            <Checkbox id="playlist_cbx_03" checked={this.state['playlist_cbx_03']} onChange={this.handleChange} inline >New A (v3)</Checkbox>
+            <Checkbox id="playlist_cbx_04" checked={this.state['playlist_cbx_04']} onChange={this.handleChange} inline >New B</Checkbox>
+            <Checkbox id="playlist_cbx_05" checked={this.state['playlist_cbx_05']} onChange={this.handleChange} inline >New B (v2)</Checkbox>
+            <Checkbox id="playlist_cbx_06" checked={this.state['playlist_cbx_06']} onChange={this.handleChange} inline >New B (v3)</Checkbox>
+            <Checkbox id="playlist_cbx_07" checked={this.state['playlist_cbx_07']} onChange={this.handleChange} inline >New B (v4)</Checkbox>
+            <Checkbox id="playlist_cbx_08" checked={this.state['playlist_cbx_08']} onChange={this.handleChange} inline >New B (v5)</Checkbox>
+            <Checkbox id="playlist_cbx_09" checked={this.state['playlist_cbx_09']} onChange={this.handleChange} inline >New B (v6)</Checkbox>
+            <Checkbox id="playlist_cbx_10" checked={this.state['playlist_cbx_10']} onChange={this.handleChange} inline >New B (v7)</Checkbox>
             <Checkbox id="playlist_cbx_11" checked={this.state['playlist_cbx_11']} onChange={this.handleChange} inline >New C</Checkbox>
             <Checkbox id="playlist_cbx_12" checked={this.state['playlist_cbx_12']} onChange={this.handleChange} inline >New E</Checkbox>
           </p>
@@ -259,13 +259,23 @@ class App extends Component {
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
+                    searchTemplate="playlist_v2_newA_v3"
+                    title="New A (v3)"
+                    refresh={this.state.refreshPlaylist}
+                    pageSize={this.state.pageSize}
+                  />
+                </Col>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_04 ? 'inline' : 'none' }}>
+                  <SearchRespList
+                    keyword={this.state.keyword}
+                    searchIndex="playlist_v3"
                     searchTemplate="playlist_v2_fix_score_p_artist_synonym"
                     title="New B"
                     refresh={this.state.refreshPlaylist}
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_04 ? 'inline' : 'none' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_05 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -275,7 +285,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_05 ? 'inline' : 'none' }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_06 ? 'inline' : 'none' }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -285,7 +295,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_06 ? 'inline' : 'none'  }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_07 ? 'inline' : 'none'  }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -295,7 +305,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_07 ? 'inline' : 'none'  }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_08 ? 'inline' : 'none'  }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -305,7 +315,7 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_08 ? 'inline' : 'none'  }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_09 ? 'inline' : 'none'  }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
@@ -315,22 +325,12 @@ class App extends Component {
                     pageSize={this.state.pageSize}
                   />
                 </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_09 ? 'inline' : 'none'  }}>
+                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_10 ? 'inline' : 'none'  }}>
                   <SearchRespList
                     keyword={this.state.keyword}
                     searchIndex="playlist_v3"
                     searchTemplate="playlist_v2_fix_score_p_artist_mix_v7"
                     title="New B (v7)"
-                    refresh={this.state.refreshPlaylist}
-                    pageSize={this.state.pageSize}
-                  />
-                </Col>
-                <Col xs={6} md={2} style={{ margin: '0px', padding: '1px', display: this.state.playlist_cbx_10 ? 'inline' : 'none'  }}>
-                  <SearchRespList
-                    keyword={this.state.keyword}
-                    searchIndex="playlist_v3"
-                    searchTemplate="playlist_v2_fix_score_p_artist_mix_v8"
-                    title="New B (v8)"
                     refresh={this.state.refreshPlaylist}
                     pageSize={this.state.pageSize}
                   />
